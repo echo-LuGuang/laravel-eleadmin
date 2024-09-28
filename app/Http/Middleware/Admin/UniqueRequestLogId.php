@@ -17,10 +17,13 @@ class UniqueRequestLogId
 
         $response = $next($request);
 
+        // 设置响应头
         $response->headers->set('X-Log-Id', $logId);
+        // 获取响应内容
         $content = $response->getContent();
 
-        if (json_validate($content)) {
+        // 如果响应内容是json格式
+        if ($request->acceptsJson()) {
             $content = JsonTool::decode($response->getContent());
             $content['logid'] = $logId;
             $content = JsonTool::encode($content);

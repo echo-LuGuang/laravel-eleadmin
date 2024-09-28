@@ -6,7 +6,7 @@ return [
     'enabled' => true,
 
     'directories' => [
-        // api
+        // eleadmin接口
         app_path('Http/Controllers/Admin') => [
             'prefix' => 'api/admin',
             'middleware' => [UniqueRequestLogId::class],

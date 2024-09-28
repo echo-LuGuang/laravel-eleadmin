@@ -9,6 +9,6 @@ class IndexController extends AdminBaseController
     #[Get('/')]
     public function index()
     {
-
+        return $this->success();
     }
 }
