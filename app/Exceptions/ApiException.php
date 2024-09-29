@@ -2,14 +2,19 @@
 
 namespace App\Exceptions;
 
-use App\Enums\Response\StatusCodeEnum;
+use App\Tools\JsonTool;
 use Exception;
 use Illuminate\Http\JsonResponse;
 
 class ApiException extends Exception
 {
+    public function report(): null
+    {
+        return null;
+    }
+
     public function render(): JsonResponse
     {
-        return json($this->getMessage(), [], StatusCodeEnum::HTTP_BAD_REQUEST, []);
+        return JsonTool::error($this->getMessage());
     }
 }

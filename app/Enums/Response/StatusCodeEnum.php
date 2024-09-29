@@ -2,8 +2,6 @@
 
 namespace App\Enums\Response;
 
-use Symfony\Component\HttpFoundation\Response;
-
 enum StatusCodeEnum: int
 {
     /**

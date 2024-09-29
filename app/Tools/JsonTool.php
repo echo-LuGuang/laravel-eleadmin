@@ -21,7 +21,7 @@ final class JsonTool
     /**
      * 返回正确的json响应
      */
-    public static function success($data = [], string $message = '操作成功', StatusCodeEnum $statusCodeEnum = StatusCodeEnum::HTTP_OK, array $header = []): JsonResponse
+    public static function success(mixed $data = [], string $message = '操作成功', StatusCodeEnum $statusCodeEnum = StatusCodeEnum::HTTP_OK, array $header = []): JsonResponse
     {
         return self::json($data, $message, $statusCodeEnum, $header);
     }
@@ -29,7 +29,7 @@ final class JsonTool
     /**
      * 返回错误的json响应
      */
-    public static function error(string $message = '操作失败', array $data = [], StatusCodeEnum $statusCodeEnum = StatusCodeEnum::HTTP_BAD_REQUEST, array $header = []): JsonResponse
+    public static function error(mixed $message = '操作失败', array $data = [], StatusCodeEnum $statusCodeEnum = StatusCodeEnum::HTTP_BAD_REQUEST, array $header = []): JsonResponse
     {
         return self::json($message, $data, $statusCodeEnum, $header);
     }
@@ -37,7 +37,7 @@ final class JsonTool
     /**
      * 返回失败的json响应
      */
-    public static function fail(string $message = '系统错误', array $data = [], StatusCodeEnum $statusCodeEnum = StatusCodeEnum::HTTP_INTERNAL_SERVER_ERROR, array $header = []): JsonResponse
+    public static function fail(mixed $message = '系统错误', array $data = [], StatusCodeEnum $statusCodeEnum = StatusCodeEnum::HTTP_INTERNAL_SERVER_ERROR, array $header = []): JsonResponse
     {
         return self::json($message, $data, $statusCodeEnum, $header);
     }
@@ -55,7 +55,7 @@ final class JsonTool
 
         if (is_string($data)) {
             $result['message'] = $data;
-            $result['data'] = new stdClass();
+            $result['data'] = $message;
         }
 
         return response()->json($result, 200, $header, JSON_UNESCAPED_UNICODE);

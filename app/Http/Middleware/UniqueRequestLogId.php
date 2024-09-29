@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware\Admin;
+namespace App\Http\Middleware;
 
 use App\Tools\JsonTool;
 use Closure;

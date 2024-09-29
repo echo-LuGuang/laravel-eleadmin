@@ -68,8 +68,22 @@ return Application::configure(basePath: dirname(__DIR__))
 
         // 未捕获的异常
         $exceptions->render(function (Throwable $e, Request $request) {
+
+            $isDebug = app()->hasDebugModeEnabled();
+
+            $data = [];
+
+            if ($isDebug) {
+                $data = [
+                    'message' => $e->getMessage(),
+                    'code' => $e->getCode(),
+                    'file' => $e->getFile(),
+                    'line' => $e->getLine(),
+                ];
+            }
+
             if ($request->is('api/*')) {
-                return JsonTool::fail();
+                return JsonTool::fail(data: $data);
             }
 
             return false;
