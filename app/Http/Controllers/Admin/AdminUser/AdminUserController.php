@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\System;
+namespace App\Http\Controllers\Admin\AdminUser;
 
 use App\Attributes\AdminAuthorize;
 use App\Http\Controllers\Admin\AdminBaseController;
@@ -9,11 +9,10 @@ use Spatie\RouteAttributes\Attributes\Get;
 use Spatie\RouteAttributes\Attributes\Middleware;
 use Spatie\RouteAttributes\Attributes\Prefix;
 
-#[Prefix('system')]
 #[Middleware(AdminJwtAuthMiddleware::class)]
-class AdminUserController extends AdminBaseController
+final class AdminUserController extends AdminBaseController
 {
-    #[Get('adminUser')]
-    #[AdminAuthorize('admin.admin.index')]
+    #[Get('admin_user')]
+    #[AdminAuthorize('admin.adminUser.index')]
     public function index() {}
 }

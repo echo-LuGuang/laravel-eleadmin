@@ -3,15 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\AdminUser;
 
 abstract class AdminBaseController extends Controller
 {
     /**
      * 获取当前登录的admin用户
      */
-    protected function admin()
+    protected function adminUser(): ?AdminUser
     {
-        return auth()->guard();
+        /** @var AdminUser $adminUser */
+        $adminUser = auth()->user();
+
+        return $adminUser;
     }
 
     /**
