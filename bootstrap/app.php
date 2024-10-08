@@ -30,15 +30,6 @@ return Application::configure(basePath: dirname(__DIR__))
             return false;
         });
 
-        // 运行时异常
-        $exceptions->render(function (RuntimeException $e, Request $request) {
-            if ($request->is('api/*')) {
-                return JsonTool::fail();
-            }
-
-            return false;
-        });
-
         // 404
         $exceptions->render(function (NotFoundHttpException $e, Request $request) {
             if ($request->is('api/*')) {
@@ -68,21 +59,21 @@ return Application::configure(basePath: dirname(__DIR__))
 
         // 未捕获的异常
         $exceptions->render(function (Throwable $e, Request $request) {
-
-            $isDebug = app()->hasDebugModeEnabled();
-
-            $data = [];
-
-            if ($isDebug) {
-                $data = [
-                    'message' => $e->getMessage(),
-                    'code' => $e->getCode(),
-                    'file' => $e->getFile(),
-                    'line' => $e->getLine(),
-                ];
-            }
-
             if ($request->is('api/*')) {
+
+                $isDebug = app()->hasDebugModeEnabled();
+
+                $data = [];
+
+                if ($isDebug) {
+                    $data = [
+                        'message' => $e->getMessage(),
+                        'code' => $e->getCode(),
+                        'file' => $e->getFile(),
+                        'line' => $e->getLine(),
+                    ];
+                }
+
                 return JsonTool::fail(data: $data);
             }
 

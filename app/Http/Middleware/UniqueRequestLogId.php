@@ -13,10 +13,8 @@ class UniqueRequestLogId
     public function handle(Request $request, Closure $next): Response
     {
         $logId = Str::uuid()->toString();
-        $request->merge(['logid' => $logId]);
 
         $response = $next($request);
-
         // 设置响应头
         $response->headers->set('X-Log-Id', $logId);
         // 获取响应内容

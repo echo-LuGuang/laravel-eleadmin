@@ -2,18 +2,19 @@
 
 namespace App\Http\Middleware\Admin;
 
+use App\Enums\Response\StatusCodeEnum;
+use App\Tools\JsonTool;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-final class AdminMiddleware
+class AdminJwtAuthMiddleware
 {
-    private string $guard = 'admin';
-
     public function handle(Request $request, Closure $next): Response
     {
-        Auth::shouldUse($this->guard);
+        if (! auth()->check()) {
+            return JsonTool::error(message: '请先登录', statusCodeEnum: StatusCodeEnum::HTTP_UNAUTHORIZED);
+        }
 
         return $next($request);
     }
