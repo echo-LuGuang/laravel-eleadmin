@@ -7,7 +7,6 @@ use App\Http\Controllers\Admin\AdminBaseController;
 use App\Http\Middleware\Admin\AdminJwtAuthMiddleware;
 use Spatie\RouteAttributes\Attributes\Get;
 use Spatie\RouteAttributes\Attributes\Middleware;
-use Spatie\RouteAttributes\Attributes\Prefix;
 
 #[Middleware(AdminJwtAuthMiddleware::class)]
 final class AdminUserController extends AdminBaseController
