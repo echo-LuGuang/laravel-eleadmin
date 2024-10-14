@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers\Admin\AdminUser;
 
-use App\Attributes\AdminAuthorize;
+use App\Attributes\AdminPermissionAttribute;
 use App\Http\Controllers\Admin\AdminBaseController;
 use App\Http\Middleware\Admin\AdminJwtAuthMiddleware;
+use App\Http\Middleware\Admin\AdminPermissionMiddleware;
 use Spatie\RouteAttributes\Attributes\Get;
 use Spatie\RouteAttributes\Attributes\Middleware;
 
-#[Middleware(AdminJwtAuthMiddleware::class)]
+#[Middleware([AdminJwtAuthMiddleware::class, AdminPermissionMiddleware::class])]
 final class AdminUserController extends AdminBaseController
 {
     #[Get('admin_user')]
-    #[AdminAuthorize('admin.adminUser.index')]
-    public function index() {}
+    #[AdminPermissionAttribute('admin.adminUser.index')]
+    public function index()
+    {
+
+    }
 }

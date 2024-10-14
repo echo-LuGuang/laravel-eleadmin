@@ -9,7 +9,6 @@ class AdminLoginData extends Data
     public function __construct(
         public string $username,
         public string $password,
-        public bool $remember = false,
     ) {}
 
     public static function messages(...$args): array
