@@ -13,7 +13,7 @@ final class AdminUser extends Authenticatable implements JWTSubject
      */
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(AdminRole::class, AdminUserRole::class, 'admin_user_id', 'admin_role_id');
+        return $this->belongsToMany(AdminRole::class, 'admin_user_roles');
     }
 
     /**

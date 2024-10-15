@@ -9,6 +9,6 @@ final class AdminMenu extends BaseModel
 {
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(AdminRole::class, AdminRoleMenu::class);
+        return $this->belongsToMany(AdminRole::class, 'admin_user_roles');
     }
 }

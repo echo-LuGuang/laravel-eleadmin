@@ -17,7 +17,7 @@ final class AdminRole extends BaseModel
      */
     public function menus(): BelongsToMany
     {
-        return $this->belongsToMany(AdminMenu::class, AdminRoleMenu::class);
+        return $this->belongsToMany(AdminMenu::class, 'admin_role_menus');
     }
 
     /**
@@ -25,6 +25,6 @@ final class AdminRole extends BaseModel
      */
     public function adminUsers(): BelongsToMany
     {
-        return $this->belongsToMany(AdminUser::class, AdminUserRole::class);
+        return $this->belongsToMany(AdminUser::class, 'admin_user_roles');
     }
 }
