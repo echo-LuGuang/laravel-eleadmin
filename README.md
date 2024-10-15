@@ -4,6 +4,15 @@
 laravel对接eleadmin系统
 ```
 
+### init
+```
+composer install
+
+php artisan key:generate
+
+php artisan jwt:secret
+```
+
 ### laravel-ide-helper
 
 `php artisan ide-helper:generate`

@@ -8,7 +8,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminJwtAuthMiddleware
+final class AdminJwtAuthMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
