@@ -6,6 +6,9 @@ use App\Models\BaseModel;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+/**
+ * @mixin IdeHelperAdminRole
+ */
 final class AdminRole extends BaseModel
 {
     use Cachable;

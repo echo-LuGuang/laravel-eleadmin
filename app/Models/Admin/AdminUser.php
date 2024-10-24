@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
+/**
+ * @mixin IdeHelperAdminUser
+ */
 final class AdminUser extends Authenticatable implements JWTSubject
 {
     /**

@@ -16,6 +16,7 @@ final class AdminUserController extends AdminBaseController
     #[AdminPermissionAttribute('admin.adminUser.index')]
     public function index()
     {
-
+        dump($this->adminUser()->roles()->get());
+        dump(1);
     }
 }
