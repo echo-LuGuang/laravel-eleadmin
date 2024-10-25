@@ -22,16 +22,22 @@ final class AdminJwtAuthMiddleware
             try {
                 // 尝试刷新令牌
                 $newToken = JWTAuth::parseToken()->refresh();
-                // 将新令牌添加到响应头
-                $request->headers->set('Authorization', 'Bearer '.$newToken);
+                $newToken = 'Bearer '.$newToken;
             } catch (JWTException) {
                 // 刷新令牌失败
-                return JsonTool::error(message: '登录状态实效，请重新登录', statusCodeEnum: StatusCodeEnum::HTTP_UNAUTHORIZED);
+                return JsonTool::error(message: '登录状态失效，请重新登录', statusCodeEnum: StatusCodeEnum::HTTP_UNAUTHORIZED);
             }
         } catch (JWTException) {
             return JsonTool::error(message: '请先登录', statusCodeEnum: StatusCodeEnum::HTTP_UNAUTHORIZED);
         }
 
-        return $next($request);
+        $response = $next($request);
+
+        // 如果刷新了令牌，把新令牌放到响应头
+        if (isset($newToken)) {
+            $response->header('Authorization', $newToken);
+        }
+
+        return $response;
     }
 }

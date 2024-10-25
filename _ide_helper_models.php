@@ -184,7 +184,7 @@ namespace App\Models\Admin{
  * @mixin \Eloquent
  */
 	#[\AllowDynamicProperties]
-	class IdeHelperAdminUserRole {}
+	final class IdeHelperAdminUserRole {}
 }
 
 namespace App\Models{
