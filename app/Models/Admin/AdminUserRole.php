@@ -8,7 +8,7 @@ use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 /**
  * @mixin IdeHelperAdminUserRole
  */
-class AdminUserRole extends BaseModel
+final class AdminUserRole extends BaseModel
 {
     use Cachable;
 }

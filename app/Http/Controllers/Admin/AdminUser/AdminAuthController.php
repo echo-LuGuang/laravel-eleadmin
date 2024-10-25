@@ -4,13 +4,12 @@ namespace App\Http\Controllers\Admin\AdminUser;
 
 use App\Http\Controllers\Admin\AdminBaseController;
 use App\Http\Middleware\Admin\AdminJwtAuthMiddleware;
-use App\Http\Middleware\Admin\AdminPermissionMiddleware;
 use App\Services\Admin\AdminUser\AdminUserService;
 use Illuminate\Http\JsonResponse;
 use Spatie\RouteAttributes\Attributes\Get;
 use Spatie\RouteAttributes\Attributes\Middleware;
 
-#[Middleware([AdminJwtAuthMiddleware::class, AdminPermissionMiddleware::class])]
+#[Middleware([AdminJwtAuthMiddleware::class])]
 final class AdminAuthController extends AdminBaseController
 {
     public function __construct(
@@ -33,7 +32,7 @@ final class AdminAuthController extends AdminBaseController
 
         $data = [
             'roles' => $roles,
-            'menus' => $menus,
+            'authorities' => $menus,
         ];
 
         return $this->success($data);
