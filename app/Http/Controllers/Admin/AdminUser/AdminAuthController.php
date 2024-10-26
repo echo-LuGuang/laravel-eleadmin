@@ -33,8 +33,20 @@ final class AdminAuthController extends AdminBaseController
         $data = [
             'roles' => $roles,
             'authorities' => $menus,
+            ...$adminUser->setHidden(['password'])->toArray(),
         ];
 
         return $this->success($data);
+    }
+
+    /**
+     * 退出登录
+     */
+    #[Get('auth/logout')]
+    public function logout(): JsonResponse
+    {
+        auth()->logout();
+
+        return $this->success();
     }
 }
