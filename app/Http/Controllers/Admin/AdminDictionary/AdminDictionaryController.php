@@ -42,7 +42,7 @@ final class AdminDictionaryController extends AdminBaseController
 
             $enumDescribeAttribute = $classConstantReflection->getAttributes(EnumDescribeAttribute::class)[0] ?? null;
 
-            if ($enumDescribeAttribute) {
+            if (! empty($enumDescribeAttribute)) {
                 $data[] = [
                     'name' => $enumDescribeAttribute->getArguments()[0],
                     'value' => $enum->value,
