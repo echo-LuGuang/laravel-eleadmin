@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\AdminDictionary;
+namespace App\Http\Controllers\Admin\Dictionary;
 
 use App\Attributes\EnumDescribeAttribute;
 use App\Data\Admin\Dictionart\DictionaryData;
@@ -15,7 +15,7 @@ use Spatie\RouteAttributes\Attributes\Get;
 use Spatie\RouteAttributes\Attributes\Middleware;
 
 #[Middleware([AdminJwtAuthMiddleware::class])]
-final class AdminDictionaryController extends AdminBaseController
+final class DictionaryController extends AdminBaseController
 {
     /**
      * 获取字典数据
