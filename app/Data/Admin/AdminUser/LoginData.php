@@ -4,7 +4,7 @@ namespace App\Data\Admin\AdminUser;
 
 use Spatie\LaravelData\Data;
 
-class AdminLoginData extends Data
+class LoginData extends Data
 {
     public function __construct(
         public string $username,

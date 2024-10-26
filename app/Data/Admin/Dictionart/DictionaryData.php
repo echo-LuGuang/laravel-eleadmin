@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Data\Admin\AdminDictionart;
+namespace App\Data\Admin\Dictionart;
 
 use Spatie\LaravelData\Data;
 
-class AdminDictionaryData extends Data
+class DictionaryData extends Data
 {
     public function __construct(
         public string $code,

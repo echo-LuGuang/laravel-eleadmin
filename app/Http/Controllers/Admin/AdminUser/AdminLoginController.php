@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\AdminUser;
 
-use App\Data\Admin\AdminUser\AdminLoginData;
+use App\Data\Admin\AdminUser\LoginData;
 use App\Http\Controllers\Admin\AdminBaseController;
 use App\Services\Admin\AdminUser\AdminUserService;
 use Illuminate\Http\JsonResponse;
@@ -18,9 +18,9 @@ final class AdminLoginController extends AdminBaseController
      * 登录
      */
     #[Post('login')]
-    public function login(AdminLoginData $adminLoginData): JsonResponse
+    public function login(LoginData $loginData): JsonResponse
     {
-        $token = $this->adminUserService->login($adminLoginData);
+        $token = $this->adminUserService->login($loginData);
 
         return $this->success([
             'token' => $token,

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\AdminDictionary;
 
 use App\Attributes\EnumDescribeAttribute;
-use App\Data\Admin\AdminDictionart\AdminDictionaryData;
+use App\Data\Admin\Dictionart\DictionaryData;
 use App\Enums\PublicDictionary;
 use App\Exceptions\ApiException;
 use App\Http\Controllers\Admin\AdminBaseController;
@@ -21,9 +21,9 @@ final class AdminDictionaryController extends AdminBaseController
      * 获取字典数据
      */
     #[Get('dictionary')]
-    public function dictionary(AdminDictionaryData $adminDictionaryData): JsonResponse
+    public function dictionary(DictionaryData $dictionaryData): JsonResponse
     {
-        $code = $adminDictionaryData->code;
+        $code = $dictionaryData->code;
 
         // 反射获取类
         $publicDictionaryClass = new ReflectionClass(PublicDictionary::class);

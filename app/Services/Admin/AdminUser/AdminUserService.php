@@ -2,7 +2,7 @@
 
 namespace App\Services\Admin\AdminUser;
 
-use App\Data\Admin\AdminUser\AdminLoginData;
+use App\Data\Admin\AdminUser\LoginData;
 use App\Exceptions\ApiException;
 use App\Models\Admin\AdminMenu;
 use App\Models\Admin\AdminUser;
@@ -14,11 +14,11 @@ final class AdminUserService
     /**
      * 账号密码登录
      */
-    public function login(AdminLoginData $adminLoginData): string
+    public function login(LoginData $loginData): string
     {
         $token = Auth::attempt([
-            'username' => $adminLoginData->username,
-            'password' => $adminLoginData->password,
+            'username' => $loginData->username,
+            'password' => $loginData->password,
         ]);
 
         if (! $token) {

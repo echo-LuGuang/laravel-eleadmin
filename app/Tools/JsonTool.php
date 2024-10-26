@@ -4,7 +4,6 @@ namespace App\Tools;
 
 use App\Enums\Response\StatusCodeEnum;
 use Illuminate\Http\JsonResponse;
-use stdClass;
 
 final class JsonTool
 {
