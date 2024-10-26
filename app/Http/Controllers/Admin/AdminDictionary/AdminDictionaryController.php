@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Admin\AdminDictionary;
 
 use App\Attributes\EnumDescribeAttribute;
 use App\Enums\PublicDictionary;
-use App\Exceptions\RuntimeException;
+use App\Exceptions\ApiException;
 use App\Http\Controllers\Admin\AdminBaseController;
 use App\Http\Middleware\Admin\AdminJwtAuthMiddleware;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use ReflectionClass;
+use ReflectionClassConstant;
 use Spatie\RouteAttributes\Attributes\Get;
 use Spatie\RouteAttributes\Attributes\Middleware;
 
@@ -24,21 +25,24 @@ final class AdminDictionaryController extends AdminBaseController
     {
         $code = $request->input('code');
 
+        // 反射获取类
         $publicDictionaryClass = new ReflectionClass(PublicDictionary::class);
         if (! $publicDictionaryClass->hasConstant($code)) {
-            throw new RuntimeException("枚举 $code 未定义");
+            throw new ApiException("枚举 $code 未定义");
         }
 
+        // 获取对应的枚举类名
         $enumClassName = $publicDictionaryClass->getConstant($code);
         if (! enum_exists($enumClassName)) {
-            throw new RuntimeException("枚举类 $enumClassName 不存在");
+            throw new ApiException("枚举类 $enumClassName 不存在");
         }
 
         $enumClass = $enumClassName::cases();
 
         $data = [];
         foreach ($enumClass as $enum) {
-            $classConstantReflection = new \ReflectionClassConstant($enumClassName, $enum->name);
+            // 反射获取枚举属性的注解
+            $classConstantReflection = new ReflectionClassConstant($enumClassName, $enum->name);
 
             $enumDescribeAttribute = $classConstantReflection->getAttributes(EnumDescribeAttribute::class)[0] ?? null;
 
