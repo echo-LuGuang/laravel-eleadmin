@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin\AdminDictionary;
 
 use App\Attributes\EnumDescribeAttribute;
+use App\Data\Admin\AdminDictionart\AdminDictionaryData;
 use App\Enums\PublicDictionary;
 use App\Exceptions\ApiException;
 use App\Http\Controllers\Admin\AdminBaseController;
 use App\Http\Middleware\Admin\AdminJwtAuthMiddleware;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use ReflectionClass;
 use ReflectionClassConstant;
 use Spatie\RouteAttributes\Attributes\Get;
@@ -21,9 +21,9 @@ final class AdminDictionaryController extends AdminBaseController
      * 获取字典数据
      */
     #[Get('dictionary')]
-    public function dictionary(Request $request): JsonResponse
+    public function dictionary(AdminDictionaryData $adminDictionaryData): JsonResponse
     {
-        $code = $request->input('code');
+        $code = $adminDictionaryData->code;
 
         // 反射获取类
         $publicDictionaryClass = new ReflectionClass(PublicDictionary::class);
