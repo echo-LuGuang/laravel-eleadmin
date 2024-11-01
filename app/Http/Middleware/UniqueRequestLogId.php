@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 
-class UniqueRequestLogId
+final class UniqueRequestLogId
 {
     public function handle(Request $request, Closure $next): Response
     {

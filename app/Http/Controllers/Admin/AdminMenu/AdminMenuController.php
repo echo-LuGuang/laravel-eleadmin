@@ -43,8 +43,7 @@ final class AdminMenuController extends AdminBaseController
     public function update(int $menuId, AdminMenuRequest $request): JsonResponse
     {
         $validated = $request->validated();
-        $adminMenu = AdminMenu::query()->findOrFail($menuId);
-        $adminMenu->update($validated);
+        AdminMenu::query()->where('id', $menuId)->update($validated);
 
         return $this->success();
     }

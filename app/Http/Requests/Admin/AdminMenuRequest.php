@@ -8,7 +8,7 @@ use App\Models\Admin\AdminMenu;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class AdminMenuRequest extends FormRequest
+final class AdminMenuRequest extends FormRequest
 {
     public function authorize(): bool
     {
