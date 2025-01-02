@@ -17,7 +17,7 @@ final class AdminRole extends BaseModel
     protected $fillable = ['code', 'name', 'notes'];
 
     protected $dispatchesEvents = [
-        'deleting' => AdminRoleDeletingEvent::class
+        'deleting' => AdminRoleDeletingEvent::class,
     ];
 
     /**

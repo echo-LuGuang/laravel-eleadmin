@@ -12,6 +12,10 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  */
 final class AdminUser extends Authenticatable implements JWTSubject
 {
+    protected $hidden = [
+        'password',
+    ];
+
     /**
      * 关联角色
      */

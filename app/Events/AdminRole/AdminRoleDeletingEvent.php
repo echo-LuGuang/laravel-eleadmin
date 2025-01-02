@@ -6,7 +6,7 @@ use App\Models\Admin\AdminRole;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class AdminRoleDeletingEvent
+final class AdminRoleDeletingEvent
 {
     use Dispatchable, SerializesModels;
 
