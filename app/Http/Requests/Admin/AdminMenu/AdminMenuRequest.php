@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests\Admin\AdminMenu;
 
 use App\Enums\AdminMenu\AdminMenuOpenTypeEnum;
 use App\Enums\AdminMenu\AdminMenuTypeEnum;
@@ -21,7 +21,7 @@ final class AdminMenuRequest extends FormRequest
 
         return [
             'title' => ['required', 'string', 'max:20'],
-            'authority' => ['nullable', 'string'],
+            'authority_code' => ['nullable', 'string'],
             'component' => ['nullable', 'string'],
             'is_hide' => ['required', 'integer', 'in:0,1'],
             'icon' => ['nullable', 'string'],
