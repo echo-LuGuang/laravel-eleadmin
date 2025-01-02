@@ -29,7 +29,7 @@ final class AdminUserController extends AdminBaseController
         $where = [];
         foreach ($params as $key => $value) {
             if (! empty($value)) {
-                $where[] = [$key, '=', $value];
+                $where[] = [$key, 'like', "%$value%"];
             }
         }
 
